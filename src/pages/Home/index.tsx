@@ -26,11 +26,11 @@ const Home = () => {
         icon="sheep.svg"
         id="intro"
       />
-      {/* <MiddleBlock
+      <MiddleBlock
         title={MiddleBlockContent.title}
         content={MiddleBlockContent.text}
         button={MiddleBlockContent.button}
-      /> */}
+      />
       <ContentBlock
         direction="left"
         title={AboutContent.title}
