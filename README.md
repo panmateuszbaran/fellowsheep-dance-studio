@@ -1,103 +1,112 @@
-# Welcome to React Router + Cloudflare Workers!
+![landy](https://user-images.githubusercontent.com/48876996/121569479-e179db80-ca31-11eb-8a48-9c3de9b142f3.gif)
 
-[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/cloudflare/templates/tree/main/fellowsheep-dance-studio)
+![Landy React Template License](https://img.shields.io/github/license/Adrinlol/landy-react-template)
+![Landy React Template Release Date](https://img.shields.io/github/release-date/Adrinlol/landy-react-template)
+![Landy React TemplateStars](https://img.shields.io/github/stars/Adrinlol/landy-react-template)
+![Landy React Template Language](https://img.shields.io/github/languages/top/Adrinlol/landy-react-template)
+![Landy React Template TypeScript](https://badgen.net/npm/types/tslib)
 
-![React Router Starter Template Preview](https://imagedelivery.net/wSMYJvS3Xw-n339CbDyDIA/bfdc2f85-e5c9-4c92-128b-3a6711249800/public)
+## Free React landing page template
 
-<!-- dash-content-start -->
+[Landy][Landy] is an open-source React landing page template written in TypeScript, designed for developers and startups, who want to create a quick and professional landing page for their business or project.
 
-A modern, production-ready template for building full-stack React applications using [React Router](https://reactrouter.com/) and the [Cloudflare Vite plugin](https://developers.cloudflare.com/workers/vite-plugin/).
+This React template comes with multi-lingual support, smooth animations, set of ready to use sections and most importantly, all of the content is stored in the JSON files, so that you can manage the texts without having any prior knowledge in React.js.
+
+## Table of contents
+
+- [Features](#features)
+- [Google Lighthouse](#google-lighthouse)
+  - [Performance](#performance)
+  - [Accessibility](#accessibility)
+  - [Best Practices](#best-practices)
+  - [SEO](#seo)
+- [Demo](#demo)
+- [Installation](#installation)
+- [Special Thanks](#special-thanks)
+- [Usage](#usage)
+- [License](#license)
 
 ## Features
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+Your project will have everything you need to build a modern single-page React app:
 
-<!-- dash-content-end -->
+- 🎁 **Modern** – Template created using the latest features of React (State management using Hooks, Code-Splitting to reduce the bundle size)
 
-## Getting Started
+- 💻 **Responsive** – Highly responsive and reusable UI components, that change depending on the provided props
 
-Outside of this repo, you can start a new project with this template using [C3](https://developers.cloudflare.com/pages/get-started/c3/) (the `create-cloudflare` CLI):
+- 🚀 **Fast** – Buttery smooth experience thanks to the implementation of best practices and no third party dependencies, resulting in <b>PERFECT</b> Google Lighthouse scores
 
-```bash
-npm create cloudflare@latest -- --template=cloudflare/templates/fellowsheep-dance-studio
-```
+- 🏷 **TypeScript support** – Landy is written in TypeScript to improve the DX
 
-A live public deployment of this template is available at [https://fellowsheep-dance-studio.templates.workers.dev](https://fellowsheep-dance-studio.templates.workers.dev)
+- 🌍 **Internationalization** - Prebuilt standalone file that works in every environment and doesn't require reloading the page to translate the content
+
+- 🛸 **Routing** - Each file inside the src/pages directory will generate its own route, so you don't have to manually handle the routing
+
+- 🤙 **Contact Form** - Contact form written in React Hooks, with uncontrolled form validation to reduce unnecessary performance penalty. You just need to provide the endpoint
+
+- ⚙️ **Maintenance** - All of the content is stored in the JSON files, so that you can easily manage the content of the website
+
+## Google Lighthouse
+
+![1](https://user-images.githubusercontent.com/48876996/121569366-c313e000-ca31-11eb-940c-187f556ff0d6.png)
+
+[Google Lighthouse][Google Lighthouse] is an open-source, automated tool for measuring the quality of web pages. Google Lighthouse audits performance, accessibility and search engine optimization of web pages.
+
+### Performance
+
+Audits for metrics like first paint and time to interactive to determine lag.
+
+### Accessibility
+
+Checks for common issues that may prevent users from accessing your content.
+
+### Best Practices
+
+Looks for everything from HTTPS usage to correct image aspect ratios.
+
+### SEO 
+
+Checks for best practices to ensure your site is discoverable.
+
+
+## Demo
+
+Check the live demo here 👉️ https://landy-web.netlify.app/
+
 
 ### Installation
 
-Install the dependencies:
+You’ll need to have Node 10.16.0 or later version on your local development machine (but it’s not required on the server). I recommend using the latest LTS version.
 
-```bash
-npm install
-```
+To create a new app, you have to:
 
-### Development
+Begin by cloning this repository to establish your own local copy. This process is straightforward and ensures you have all the necessary files and resources at your fingertips. You can find step-by-step instructions in this helpful article: Cloning a [repository on GitHub.com](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository#cloning-a-repository).
 
-Start the development server with HMR:
+## What's included
 
-```bash
-npm run dev
-```
+- [antd][antd] - React UI library that contains a set of high quality components.
+- [react-awesome-reveal][react-awesome-reveal] - High performance library that adds reveal animations using the Intersection Observer API.
+- [styled-componets][styled-componets] - Variant on “CSS-in-JS”—which solves many of the problems with traditional CSS.
+- [i18next][i18next] - Internationalization-framework written in and for JavaScript.
 
-Your application will be available at `http://localhost:5173`.
+## Special thanks
 
-## Typegen
+[whoooa][whoooa] - Use fantastic, handmade illustrations with easily changeable colors and different styles.
 
-Generate types for your Cloudflare bindings in `wrangler.json`:
+## Usage
 
-```sh
-npm run typegen
-```
+Use it for whatever you want, and be sure to reach out to me on [Twitter](https://twitter.com/Adrinlolx) if you have any questions, or build something cool with it.
 
-## Building for Production
+## License
 
-Create a production build:
+Licensed under the MIT license.
 
-```bash
-npm run build
-```
-
-## Previewing the Production Build
-
-Preview the production build locally:
-
-```bash
-npm run preview
-```
-
-## Deployment
-
-If you don't have a Cloudflare account, [create one here](https://dash.cloudflare.com/sign-up)! Go to your [Workers dashboard](https://dash.cloudflare.com/?to=%2F%3Aaccount%2Fworkers-and-pages) to see your [free custom Cloudflare Workers subdomain](https://developers.cloudflare.com/workers/configuration/routing/workers-dev/) on `*.workers.dev`.
-
-Once that's done, you can deploy your app:
-
-```sh
-npm run deploy
-```
-
-To deploy a preview URL:
-
-```sh
-npx wrangler versions upload
-```
-
-You can then promote a version to production after verification or roll it out progressively.
-
-```sh
-npx wrangler versions deploy
-```
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
-
----
-
-Built with ❤️ using React Router.
+<!-- prettier-ignore-start -->
+[antd]: https://github.com/ant-design/ant-design
+[react-awesome-reveal]: https://www.npmjs.com/package/react-awesome-reveal
+[styled-componets]: https://github.com/styled-components/styled-components
+[i18next]: https://github.com/i18next/i18next
+[whoooa]: https://www.whoooa.rocks/
+[Landy]: https://www.npmjs.com/package/cra-template-adrinlol
+[Google Lighthouse]: https://developers.google.com/web/tools/lighthouse
+<!-- prettier-ignore-end -->

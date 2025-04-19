@@ -1,0 +1,16 @@
+{
+  "title": "Naucz się tańca sprawnie i bezboleśnie",
+  "text": "This template is ready to use, so you don't need to change anything at a component level, unless you want to customize the default styling.",
+  "section": [
+    {
+      "title": "Dlaczego my?",
+      "content": "Jesteśmy nastawieni na wasz komfort i swobodę.",
+      "icon": "question.svg"
+    },
+    {
+      "title": "Karnety sportowe",
+      "content": "Obsługujemy karty Benefit Systems: Multisport, FitProfit oraz Medicover, OK System.",
+      "icon": "benefit.png"
+    }
+  ]
+}
