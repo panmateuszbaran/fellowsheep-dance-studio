@@ -5,13 +5,13 @@ import AboutContent from "../../content/AboutContent.json";
 import MissionContent from "../../content/MissionContent.json";
 import ProductContent from "../../content/ProductContent.json";
 import ContactContent from "../../content/ContactContent.json";
-import EventCalendar from "../../components/EventCalendar";
 
 const Contact = lazy(() => import("../../components/ContactForm"));
 const MiddleBlock = lazy(() => import("../../components/MiddleBlock"));
 const Container = lazy(() => import("../../common/Container"));
 const ScrollToTop = lazy(() => import("../../common/ScrollToTop"));
 const ContentBlock = lazy(() => import("../../components/ContentBlock"));
+const Scheduler = lazy(() => import("../../components/EventCalendar"));
 
 
 const Home = () => {
@@ -43,7 +43,7 @@ const Home = () => {
         direction="right"
         title={MissionContent.title}
         content={MissionContent.text}
-        icon="product-launch.svg"
+        icon="sheep_logo.svg"
         id="mission"
       />
       <ContentBlock
@@ -53,10 +53,7 @@ const Home = () => {
         icon="sheep2.svg"
         id="product"
       />
-      <hr/>
-      TUTEJ BEDZIE KALYNDORZ
-      <EventCalendar />
-      <hr/>
+      <Scheduler />
       <Contact
         title={ContactContent.title}
         content={ContactContent.text}
