@@ -6,6 +6,10 @@ import 'antd/dist/antd.min.css';
 import Router from "./router";
 import i18n from "./translation";
 
+import { registerLicense } from '@syncfusion/ej2-base';
+
+registerLicense("ORg4AjUWIQA/Gnt2XFhhQlJHfV5AQmBIYVp/TGpJfl96cVxMZVVBJAtUQF1hTH5XdERjXXxbdXNWQWVaWkZ/");
+
 const App = () => (
   <BrowserRouter>
     <I18nextProvider i18n={i18n}>

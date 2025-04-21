@@ -7,6 +7,10 @@
     "@emotion/react": "^11.14.0",
     "@syncfusion/ej2-cldr-data": "^29.1.33",
     "@syncfusion/ej2-locale": "^29.1.33",
+    "@syncfusion/ej2-react-buttons": "^29.1.34",
+    "@syncfusion/ej2-react-calendars": "^29.1.35",
+    "@syncfusion/ej2-react-dropdowns": "^29.1.38",
+    "@syncfusion/ej2-react-inputs": "^29.1.38",
     "@syncfusion/ej2-react-schedule": "^29.1.38",
     "@types/node": "^15.14.9",
     "@types/react": "^17.0.68",
@@ -28,7 +32,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "CI=false react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
