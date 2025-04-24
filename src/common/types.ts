@@ -1,3 +1,4 @@
+import { CSSProperties } from "react";
 import { TFunction } from "react-i18next";
 export interface ContainerProps {
   border?: boolean;
@@ -8,6 +9,7 @@ export interface ButtonProps {
   color?: string;
   name?: string;
   children: React.ReactNode;
+  style?: CSSProperties | undefined;
   onClick?: () => void;
 }
 

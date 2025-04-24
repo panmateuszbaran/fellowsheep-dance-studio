@@ -7,6 +7,8 @@ import Router from "./router";
 import i18n from "./translation";
 
 import { registerLicense } from '@syncfusion/ej2-base';
+import { GoogleOAuthProvider } from '@react-oauth/google';
+
 
 registerLicense("ORg4AjUWIQA/Gnt2XFhhQlJHfV5AQmBIYVp/TGpJfl96cVxMZVVBJAtUQF1hTH5XdERjXXxbdXNWQWVaWkZ/");
 
@@ -18,4 +20,5 @@ const App = () => (
   </BrowserRouter>
 );
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(
+<GoogleOAuthProvider clientId="705803557545-7qituk5dc36cotjv0l9op0n13loj82ag.apps.googleusercontent.com"><App /></GoogleOAuthProvider>, document.getElementById("root"));

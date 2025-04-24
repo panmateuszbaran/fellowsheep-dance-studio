@@ -1,0 +1,3 @@
+name = "fellowsheep-dance-studio"
+compatibility_date = "2025-04-21"
+assets = { directory = "build" }

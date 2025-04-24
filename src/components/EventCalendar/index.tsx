@@ -7,8 +7,8 @@ import "../../../node_modules/@syncfusion/ej2-inputs/styles/material.css";
 import "../../../node_modules/@syncfusion/ej2-navigations/styles/material.css";
 import "../../../node_modules/@syncfusion/ej2-popups/styles/material.css";
 import "../../../node_modules/@syncfusion/ej2-react-schedule/styles/material.css";
-import { ScheduleComponent, Day, Week, Month, Inject, ViewsDirective, ViewDirective, EventRenderedArgs } from '@syncfusion/ej2-react-schedule';
-import { L10n, setCulture, loadCldr, extend, Internationalization } from '@syncfusion/ej2-base';
+import { ScheduleComponent, Day, Week, Month, Inject, ViewsDirective, ViewDirective } from '@syncfusion/ej2-react-schedule';
+import { L10n, setCulture, loadCldr, extend } from '@syncfusion/ej2-base';
 import plNumberData from '@syncfusion/ej2-cldr-data/main/pl/numbers.json';
 import pltimeZoneData from '@syncfusion/ej2-cldr-data/main/pl/timeZoneNames.json';
 import plGregorian from '@syncfusion/ej2-cldr-data/main/pl/ca-gregorian.json';
@@ -22,6 +22,14 @@ import Container from "../../common/Container";
 import ScrollToTop from "../../common/ScrollToTop";
 import { Slide } from "react-awesome-reveal";
 import { useRef } from "react";
+
+import { GoogleLogin, useGoogleLogin } from '@react-oauth/google';
+import { jwtDecode, JwtPayload } from "jwt-decode";
+import React from "react";
+import axios from "axios";
+import { Button } from "../../common/Button";
+
+import Cookies from 'universal-cookie';
 
 L10n.load(pl);
 loadCldr(plNumberData, pltimeZoneData, plGregorian, plNumberingSystem);
@@ -39,6 +47,16 @@ const dataSource = [
 
 interface SchedulerProps {
 }
+
+interface UserInfo {
+  email: string;
+  family_name: string;
+  given_Name: string;
+  name: string;
+  picture: string;
+}
+
+const cookies = new Cookies();
 
 const timeScale = { enable: true, interval: 60, slotCount: 1 };
 const workDays = [0, 1, 2, 3, 4, 5, 6];
@@ -115,11 +133,11 @@ const Scheduler = ({}: SchedulerProps) => {
     );
   }  
   
-  let instance: Internationalization = new Internationalization();
+  //let instance: Internationalization = new Internationalization();
 
-  const getTimeString = (value: Date) => {
-    return instance.formatDate(value, { skeleton: 'hm' });
-  }
+  // const getTimeString = (value: Date) => {
+  //   return instance.formatDate(value, { skeleton: 'hm' });
+  // }
 
   const monthEventTemplate = (props: any) => {
     return (
@@ -129,33 +147,90 @@ const Scheduler = ({}: SchedulerProps) => {
       </div>
     );
   }
+  const [isSetRememberMe, setIsSetRememberMe] = React.useState(false);
+  const [isAdminUser, setIsAdminUser] = React.useState(false);
+  const [userInfo, setUserInfo] = React.useState<UserInfo | null>(!cookies.get("credential") ? null : jwtDecode(cookies.get("credential")));
+
   //////////////////////////////////////
+  
   return (
     <Container>
       <ScrollToTop />
       <Slide direction="right">
-        <ScheduleComponent
-          ref={scheduleObj} 
-          eventSettings={{ dataSource: dataSource, fields: fields }} 
-          editorTemplate={editorTemplate}
-          selectedDate={new Date()}
-          locale="pl"
-          timeScale={timeScale}
-          startHour="09:00"
-          endHour="22:00"
-          firstDayOfWeek={1}
-          workDays={workDays}
-          workHours={workHours}
-          actionBegin={onActionBegin}
-          // eventDoubleClick={(args: any)=>{args.cancel = true;}}
-        >
-          <ViewsDirective>
-            <ViewDirective option='Day' />
-            <ViewDirective option='Week'  eventTemplate={monthEventTemplate}/>
-            <ViewDirective option='Month' />
-          </ViewsDirective>
-          <Inject services={[Day, Week, Month]} />
-        </ScheduleComponent>
+        <Container>
+          {userInfo && (
+            <div style={{height:"60px", lineHeight:"60px"}}>
+              <img style={{height:"40px", margin:"auto"}} src={userInfo.picture} alt={userInfo.name}/> 
+              &nbsp;{userInfo.name}
+              <Button
+                color="#FFF"
+                style={{float: "right", height:"45px", marginTop:"5px", lineHeight:"normal"}}
+                onClick={() => { setUserInfo(null); setIsAdminUser(false); cookies.set("credential", null); }}
+              >
+                Logout
+              </Button>
+            </div>
+          )}
+          {isAdminUser && (
+            <ScheduleComponent
+              eventSettings={{ dataSource: dataSource, fields: fields }} 
+              selectedDate={new Date()}
+              locale="pl"
+              timeScale={timeScale}
+              startHour="09:00"
+              endHour="22:00"
+              firstDayOfWeek={1}
+              workDays={workDays}
+              workHours={workHours}
+            >
+              <ViewsDirective>
+                <ViewDirective option='Week' />
+              </ViewsDirective>
+              <Inject services={[Week]} />
+            </ScheduleComponent>
+          )}
+          {userInfo == undefined && 
+            <GoogleLogin
+              onSuccess={async credentialResponse => {
+                const info = jwtDecode<UserInfo>(credentialResponse.credential ?? "");
+                setUserInfo(info);
+                cookies.set("credential", credentialResponse.credential);
+                if (info.email == "mrmateuszbaran@gmail.com") {
+                  setIsAdminUser(true);
+                }
+              }}
+              onError={() => {
+                console.log('Login Failed');
+              }}
+            />
+          }
+          {!isAdminUser && (
+            <>
+              <ScheduleComponent
+                ref={scheduleObj} 
+                eventSettings={{ dataSource: dataSource, fields: fields }} 
+                editorTemplate={editorTemplate}
+                selectedDate={new Date()}
+                locale="pl"
+                timeScale={timeScale}
+                startHour="09:00"
+                endHour="22:00"
+                firstDayOfWeek={1}
+                workDays={workDays}
+                workHours={workHours}
+                actionBegin={onActionBegin}
+                // eventDoubleClick={(args: any)=>{args.cancel = true;}}
+              >
+                <ViewsDirective>
+                  <ViewDirective option='Day' />
+                  <ViewDirective option='Week'  eventTemplate={monthEventTemplate}/>
+                  <ViewDirective option='Month' />
+                </ViewsDirective>
+                <Inject services={[Day, Week, Month]} />
+              </ScheduleComponent>
+            </>
+          )}
+        </Container>
       </Slide>
     </Container>
   );
